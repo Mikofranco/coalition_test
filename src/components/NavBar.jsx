@@ -7,6 +7,8 @@ import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { useGetScreenSize } from "../utils/screenCheck";
 import { Box } from "@chakra-ui/react";
 import MobileAuthBtn from "./MobileAuthBtn";
+import { useNavigate } from "react-router-dom";
+
 
 const Container = styled.div`
   position: relative;
@@ -54,10 +56,14 @@ const NavBar = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [mobileDisplay, setMobileDisplay] = useState("none");
   const { mobile } = useGetScreenSize();
+  const navigation = useNavigate()
 
   const handleDisplay = () => {
     setMobileDisplay(mobileDisplay === "none" ? "block" : "none");
   };
+  const navigateToAuthPage=()=>{
+    navigation("/auth")
+  }
 
   useEffect(() => {
     setIsMobile(mobile);
@@ -72,8 +78,8 @@ const NavBar = () => {
           color="rgba(84, 62, 224, 1)"
         />
         <MobileButtons>
-          <AuthBtn authText="Log in" />
-          <AuthBtn authText="Sign up" login={true} />
+          <AuthBtn authText="Log in" onClick={navigateToAuthPage}/>
+          <AuthBtn authText="Sign up" login={true} onClick={navigateToAuthPage}/>
         </MobileButtons>
         <Box textAlign={"center"} mt={"1rem"}>
           <MobileLinks>Home</MobileLinks>
@@ -86,8 +92,8 @@ const NavBar = () => {
       <Logo />
       <Links />
       <Buttons>
-        <AuthBtn authText="Log in" />
-        <AuthBtn authText="Sign up" login={true} />
+        <AuthBtn authText="Log in" onClick={navigateToAuthPage}/>
+        <AuthBtn authText="Sign up" login={true}  onClick={navigateToAuthPage}/>
       </Buttons>
       {isMobile && (
         <HamburgerIcon
