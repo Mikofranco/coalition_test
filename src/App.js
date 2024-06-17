@@ -1,15 +1,42 @@
-import './App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import LandingPage from "./pages/landingPage/LandingPage"
-import AuthPage from './pages/AuthPage/AuthPage';
+import "./App.css";
+import { useState } from "react";
+import { Box, Flex } from "@chakra-ui/react";
+import NavBar from "./components/NavBar";
+import LeftSect from "./components/leftSect/LeftSect";
+import Middle from "./components/middleSect/Middle";
+import RightSect from "./components/rightSect/RightSect";
+import DiagonisticList from "./components/DiagonisticList/DiagonisticList";
+import LabResult from "./components/labresult/LabResult";
+
 function App() {
+  const [selectedPatient, setSelectedPatient] = useState(null);
+
+  const handlePatientClick = (patient) => {
+    setSelectedPatient(patient);
+  };
+
   return (
-    <Router>
-      <Routes>
-        <Route path='/' element={<LandingPage/>}></Route>
-        <Route path='/auth' element={<AuthPage/>}></Route>
-      </Routes>
-    </Router>
+    <Box >
+      <NavBar />
+      <Flex gap={"1.5rem"} p={7}>
+        <LeftSect onPatientClick={handlePatientClick} flex={1} w={"100%"} />
+        
+        <Box
+         flex={1}
+        >
+          <Middle
+           
+            patient={selectedPatient}
+          />
+          <DiagonisticList patient={selectedPatient} />
+        </Box>
+        
+        <Box flex={1}>
+          <RightSect patient={selectedPatient} />
+          <LabResult patient={selectedPatient} />
+        </Box>
+      </Flex>
+    </Box>
   );
 }
 

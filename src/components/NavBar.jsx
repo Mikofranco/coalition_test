@@ -1,108 +1,64 @@
-import React, { useEffect, useState } from "react";
-import Logo from "./assets/Logo";
-import AuthBtn from "./assets/AuthBtn";
-import styled from "styled-components";
-import Links from "./assets/Links";
-import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
-import { useGetScreenSize } from "../utils/screenCheck";
-import { Box } from "@chakra-ui/react";
-import MobileAuthBtn from "./MobileAuthBtn";
-import { useNavigate } from "react-router-dom";
-
-
-const Container = styled.div`
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 3rem;
-`;
-
-const Buttons = styled.div`
-  display: flex;
-  gap: 10px;
-
-  @media screen and (max-width: 768px) {
-    display: none;
-  }
-`;
-const MobileButtons = styled.div`
-  display: flex;
-  gap: 10px;
-  justify-content: flex-end;
-  margin-bottom: 15px;
-`;
-
-const MobileLinksPage = styled.div`
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  background-color: rgba(241, 240, 248, 0.9);
-  top: 0;
-  left: 0;
-  padding: 3rem;
-  display: ${({ display }) => display};
-`;
-
-const MobileLinks = styled.li`
-  color: rgba(84, 62, 224, 0.9);
-  font-size: 24px;
-  list-style: none;
-  margin-bottom: 10px;
-  cursor: pointer;
-`;
+import React from "react";
+import { Box, Flex, Heading, Image, Text } from "@chakra-ui/react";
+import logo from "./assets/TestLogo.svg";
+import home from "./assets/home_FILL0_wght300_GRAD0_opsz24.svg";
+import people from "./assets/group_FILL0_wght300_GRAD0_opsz24.svg";
+import scheduoe from "./assets/calendar_today_FILL0_wght300_GRAD0_opsz24.svg";
+import message from "./assets/chat_bubble_FILL0_wght300_GRAD0_opsz24.svg";
+import transaction from "./assets/credit_card_FILL0_wght300_GRAD0_opsz24.svg";
+import user from "./assets/senior-woman-doctor-and-portrait-smile-for-health-2023-11-27-05-18-16-utc@2x.jpg";
+import settings from "./assets/settings_FILL0_wght300_GRAD0_opsz24.svg";
+import icon from "./assets/more_vert_FILL0_wght300_GRAD0_opsz24.svg";
 
 const NavBar = () => {
-  const [isMobile, setIsMobile] = useState(false);
-  const [mobileDisplay, setMobileDisplay] = useState("none");
-  const { mobile } = useGetScreenSize();
-  const navigation = useNavigate()
-
-  const handleDisplay = () => {
-    setMobileDisplay(mobileDisplay === "none" ? "block" : "none");
-  };
-  const navigateToAuthPage=()=>{
-    navigation("/auth")
-  }
-
-  useEffect(() => {
-    setIsMobile(mobile);
-  }, [mobile]);
-
   return (
-    <Container>
-      <MobileLinksPage display={mobileDisplay}>
-        <CloseIcon
-          onClick={handleDisplay}
-          cursor="pointer"
-          color="rgba(84, 62, 224, 1)"
-        />
-        <MobileButtons>
-          <AuthBtn authText="Log in" onClick={navigateToAuthPage}/>
-          <AuthBtn authText="Sign up" login={true} onClick={navigateToAuthPage}/>
-        </MobileButtons>
-        <Box textAlign={"center"} mt={"1rem"}>
-          <MobileLinks>Home</MobileLinks>
-          <MobileLinks>About us</MobileLinks>
-          <MobileLinks>Services</MobileLinks>
-          <MobileLinks>Contact</MobileLinks>
-        </Box>
-      </MobileLinksPage>
+    <Box
+      // m={"0.5rem"}
+      backgroundColor={"#fff"}
+      p={"15px 2rem"}
+      borderRadius={"30px"}
+    >
+      <Flex justifyContent={"space-between"} alignItems={"center"}>
+        <Image src={logo} display={"block"} />
 
-      <Logo />
-      <Links />
-      <Buttons>
-        <AuthBtn authText="Log in" onClick={navigateToAuthPage}/>
-        <AuthBtn authText="Sign up" login={true}  onClick={navigateToAuthPage}/>
-      </Buttons>
-      {isMobile && (
-        <HamburgerIcon
-          color={"rgba(84, 62, 224, 1)"}
-          onClick={handleDisplay} // Corrected onClick
-          cursor="pointer"
-        />
-      )}
-    </Container>
+        <Flex className="links" b gap={"3rem"}>
+          <Flex justifyContent={"center"} alignItems={"center"} gap={3} cursor={"pointer"}>
+            <Image src={home} w={"15px"} /> <Text>Home</Text>
+          </Flex>
+          <Flex justifyContent={"center"} alignItems={"center"} cursor={"pointer"} gap={3} backgroundColor={"#01F0D0"} borderRadius={"20px"} p={"5px 15px"}>
+            <Image src={people} w={"15px"} /> <Text> Patients</Text>
+          </Flex>
+          <Flex justifyContent={"center"} alignItems={"center"} cursor={"pointer"} gap={3}>
+            <Image src={scheduoe} w={"15px"} /> <Text>Schedule</Text>
+          </Flex>
+          <Flex justifyContent={"center"} alignItems={"center"} cursor={"pointer"} gap={3}>
+            <Image src={message} w={"15px"} /> <Text>Message</Text>
+          </Flex>
+          <Flex justifyContent={"center"} alignItems={"center"} cursor={"pointer"} gap={3}>
+            <Image src={transaction} w={"15px"} /> <Text>Transaction</Text>
+          </Flex>
+        </Flex>
+
+        <Flex justifyContent={"center"} alignItems={"center"} gap={"15px"}>
+          <Image display={"block"} src={user} w={"50px"} h={"50px"} />
+          <Box mr={3} cursor={"pointer"}>
+            <Heading fontSize={"large"}>Dr. Jose Simmons</Heading>
+            <Text color={"#707070"}>General Practitioner</Text>
+          </Box>
+          <Flex
+            justifyContent={"center"}
+            alignItems={"center"}
+            gap={"10px"}
+            borderLeft={"2px solid lightGray"}
+            paddingLeft={"5px"}
+            h={"100%"}
+          >
+            <Image src={settings} ml={3} cursor={"pointer"}/>
+            <Image src={icon} mr={3} cursor={"pointer"}/>
+          </Flex>
+        </Flex>
+      </Flex>
+    </Box>
   );
 };
 

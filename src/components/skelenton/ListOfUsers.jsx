@@ -1,0 +1,126 @@
+import { Stack } from '@chakra-ui/react'
+import React from 'react'
+import User from './user'
+
+const ListOfUsers = () => {
+  return (
+    <Stack ml={5}>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/><User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+        <User/>
+
+    </Stack>
+  )
+}
+
+export default ListOfUsers
